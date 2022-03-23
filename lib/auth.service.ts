@@ -28,6 +28,10 @@ export class AuthService {
     return this.jwtService.sign(payload, this.getRefreshTokenOptions());
   }
 
+  async getApiToken(payload: any) {
+    return this.jwtService.sign(payload, this.getApiTokenOptions());
+  }
+
   private getAccessTokenOptions(): JwtSignOptions {
     const options: JwtSignOptions = {
       secret: this.jwtConfig.accessTokenSecret,
@@ -44,6 +48,17 @@ export class AuthService {
       secret: this.jwtConfig.refreshTokenSecret,
     };
     const expiration: string = this.jwtConfig.refreshTokenExpireIn;
+    if (expiration) {
+      options.expiresIn = expiration;
+    }
+    return options;
+  }
+
+  private getApiTokenOptions(): JwtSignOptions {
+    const options: JwtSignOptions = {
+      secret: this.jwtConfig.apiTokenExpireIn,
+    };
+    const expiration: string = this.jwtConfig.apiTokenExpireIn;
     if (expiration) {
       options.expiresIn = expiration;
     }

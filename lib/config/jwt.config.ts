@@ -5,4 +5,6 @@ export default registerAs("jwt", () => ({
   accessTokenExpireIn: process.env.JWT_ACCESS_EXPIRE || "1h",
   refreshTokenSecret: process.env.JWT_REFRESH_SECRET,
   refreshTokenExpireIn: process.env.JWT_REFRESH_EXPIRE || "1y",
+  apiTokenSecret: process.env.API_ACCESS_SECRET,
+  apiTokenExpireIn: process.env.JWT_API_EXPIRE || "60s",
 }));
