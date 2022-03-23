@@ -1,13 +1,13 @@
 {
   "name": "@gkst/nestjs-auth",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "NestJs Auth Module",
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/wk-gkst/nestjs-auth.git"
-  },  
+  },
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
     "precommit": "lint-staged",
