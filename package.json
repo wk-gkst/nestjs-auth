@@ -1,6 +1,6 @@
 {
   "name": "@gkst/nestjs-auth",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NestJs Auth Module",
   "author": "",
   "license": "MIT",
