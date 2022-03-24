@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   async getAccessToken(payload: any | JwtPayload) {
-    return this.jwtService.sign(payload, this.getAccessTokenOptions());
+    return this.jwtService.sign(payload);
   }
 
   async getRefreshToken(payload: any | JwtPayload) {
@@ -30,17 +30,6 @@ export class AuthService {
 
   async getApiToken(payload: any) {
     return this.jwtService.sign(payload, this.getApiTokenOptions());
-  }
-
-  private getAccessTokenOptions(): JwtSignOptions {
-    const options: JwtSignOptions = {
-      secret: this.jwtConfig.accessTokenSecret,
-    };
-    const expiration: string = this.jwtConfig.accessTokenExpireIn;
-    if (expiration) {
-      options.expiresIn = expiration;
-    }
-    return options;
   }
 
   private getRefreshTokenOptions(): JwtSignOptions {

@@ -2,6 +2,13 @@ import { ModuleMetadata } from "@nestjs/common";
 
 export interface AuthOptions {
   cacheConfig?: boolean;
+  //TODO: allow to override config
+  // accessTokenSecret?: string;
+  // accessTokenExpireIn?: string;
+  // refreshTokenSecret?: string;
+  // refreshTokenExpireIn?: string;
+  // apiTokenSecret?: string;
+  // apiTokenExpireIn?: string;
 }
 
 export interface AuthModuleAsyncOptions

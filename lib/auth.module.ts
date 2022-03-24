@@ -19,10 +19,10 @@ export class AuthModule {
         ConfigModule.forRoot({
           load: [JwtConfig],
           cache: options.cacheConfig,
-          isGlobal: true,
         }),
         PassportModule,
         JwtModule.registerAsync({
+          imports: [ConfigModule.forFeature(JwtConfig)],
           useClass: DefaultJwtOptionsFactory,
         }),
       ],
