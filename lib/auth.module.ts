@@ -1,6 +1,6 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { PassportModule } from "@nestjs/passport";
-import { JwtModule, JwtService } from "@nestjs/jwt";
+import { JwtModule } from "@nestjs/jwt";
 import { DefaultJwtOptionsFactory } from "./DefaultJwtOptionsFactory";
 import { JwtRefreshStrategy } from "./strategy/jwt-refresh.strategy";
 import { JwtStrategy } from "./strategy/jwt.strategy";
@@ -19,14 +19,21 @@ export class AuthModule {
         ConfigModule.forRoot({
           load: [JwtConfig],
           cache: options.cacheConfig,
+          isGlobal: true,
         }),
         PassportModule,
         JwtModule.registerAsync({
           useClass: DefaultJwtOptionsFactory,
         }),
       ],
-      providers: [JwtStrategy, JwtRefreshStrategy, JwtApiStrategy],
-      exports: [JwtService, AuthService],
+      providers: [
+        JwtModule,
+        AuthService,
+        JwtStrategy,
+        JwtRefreshStrategy,
+        JwtApiStrategy,
+      ],
+      exports: [JwtModule, AuthService],
     };
   }
 }
